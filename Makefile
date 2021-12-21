@@ -84,8 +84,17 @@ igb_lib:
 	make CC=aarch64-linux-gnu-gcc RANLIB=aarch64-linux-gnu-ranlib
 
 
+# PTP
+
+ptp:
+	cd linuxptp-3.1.1 ; \
+	make CROSS_COMPILE=${CROSS_COMPILE} prefix=${ROOTFS_DIR}/usr/local install
+
+ptp_clean:
+	cd linuxptp-3.1.1 ; \
+	make CROSS_COMPILE=${CROSS_COMPILE} KBUILD_OUTPUT=${ROOTFS_DIR} clean
+
+
 # clean 
 
-
-
-clean:  kernel/clean 
+clean:  kernel/clean ptp_clean igb_kmod_clean igb_lib_clean
