@@ -1,0 +1,6 @@
+[submodule "igb_avb"]
+	path = igb_avb
+	url = https://github.com/frankie-zeng/igb_avb.git
+[submodule "linux"]
+	path = linux
+	url = https://github.com/frankie-zeng/linux.git
