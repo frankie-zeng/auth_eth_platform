@@ -21,7 +21,7 @@ CROSS_COMPILE:=aarch64-linux-gnu-
 KERNEL:=kernel8
 
 
-.PHONY:all
+.PHONY:all pps
 all: kernel igb kernel_module
 
 saveconfig:
@@ -94,6 +94,17 @@ ptp_clean:
 	cd linuxptp-3.1.1 ; \
 	make CROSS_COMPILE=${CROSS_COMPILE} KBUILD_OUTPUT=${ROOTFS_DIR} clean
 
+
+
+# PPS
+
+pps:
+	cd pps ; \
+	make CC=${CROSS_COMPILE}gcc
+
+pps_clean:
+	cd pps ; \
+	make CC=${CROSS_COMPILE}gcc clean	
 
 # clean 
 
